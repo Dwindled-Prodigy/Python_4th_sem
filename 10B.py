@@ -1,19 +1,12 @@
-from PyPDF2 import PdfWriter, PdfReader
+import json
 
-num = int(input("Enter page number: "))
+with open('weather_data.json') as f:
+    data = json.load(f)
 
-pdf1 = open('birds.pdf', 'rb')
-pdf2 = open('birdspic.pdf', 'rb')
+cur_temp = data['main']['temp']
+humidity = data['main']['humidity']
+weather_description = data['weather'][0]['description']
 
-pdf_writer = PdfWriter()
-
-pdf1_reader = PdfReader(pdf1)
-page = pdf1_reader.pages[num - 1]
-pdf_writer.add_page(page)
-
-pdf2_reader = PdfReader(pdf2)
-page = pdf2_reader.pages[num - 1]
-pdf_writer.add_page(page)
-
-with open('output.pdf', 'wb') as output:
-    pdf_writer.write(output)
+print(f"Current temp: {cur_temp}°C")
+print(f"Humidity: {humidity}%")
+print(f"Weather description: {weather_description}")
