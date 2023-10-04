@@ -23,7 +23,7 @@ print("without using Regular Expression")
 if isPH(ph_num):
     print ("valid phone number")
 else:
-    print('valid phone number')
+    print('Invalid phone number')
 print ('using regular expression')
 if chkpn(ph_num):
     print("Valid Phone Number")
